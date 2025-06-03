@@ -1,0 +1,26 @@
+module tb_mux4to1;
+
+    reg [3:0] in;
+    reg [1:0] sel;
+    wire out;
+
+    mux4to1 uut (
+        .in(in),
+        .sel(sel),
+        .out(out)
+    );
+
+    initial begin
+        $dumpfile("dump.vcd");
+        $dumpvars(0, tb_mux4to1);
+
+        sel = 2'b00; in = 4'b0001; #10;
+        sel = 2'b01; in = 4'b0010; #10;
+        sel = 2'b10; in = 4'b0100; #10;
+        sel = 2'b11; in = 4'b1000; #10;
+        sel = 2'b01; in = 4'b1100; #10;
+
+        $finish;
+    end
+
+endmodule
