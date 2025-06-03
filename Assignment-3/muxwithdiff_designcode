@@ -1,0 +1,7 @@
+module dff_with_mux(input clk, input a, input s, output reg q);
+  wire d;
+  assign d = (s == 0) ? a : q;
+  always @(posedge clk) begin
+    q <= d;
+  end
+endmodule
